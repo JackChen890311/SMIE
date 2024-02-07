@@ -1,27 +1,53 @@
+import os
 import torch
 import numpy as np
 import pickle
 from tqdm import tqdm
 
-dataset = "pku"
-split = "split_9"
+dataset = "gym99"
+split = "split_14"
 
-split_1 = [4,19,31,47,51]
-split_2 = [12,29,32,44,59]
-split_3 = [7,20,28,39,58]
+# split_1 = [4,19,31,47,51]
+# split_2 = [12,29,32,44,59]
+# split_3 = [7,20,28,39,58]
 
-split_4 = [3, 18, 26, 38, 41, 60, 87, 99, 102, 110]
-split_5 = [5, 12, 14, 15, 17, 42, 67, 82, 100, 119]
-split_6 = [6, 20, 27, 33, 42, 55, 71, 97, 104, 118]
+# split_4 = [3, 18, 26, 38, 41, 60, 87, 99, 102, 110]
+# split_5 = [5, 12, 14, 15, 17, 42, 67, 82, 100, 119]
+# split_6 = [6, 20, 27, 33, 42, 55, 71, 97, 104, 118]
 
-split_7 = [1, 9, 20, 34, 50]
-split_8 = [3, 14, 29, 31, 49]
-split_9 = [2, 15, 39, 41, 43]
+# split_7 = [1, 9, 20, 34, 50]
+# split_8 = [3, 14, 29, 31, 49]
+# split_9 = [2, 15, 39, 41, 43]
 
-train_path = '../souredata/'+dataset+'_frame50/xsub/train_position.npy'
-test_path = '../souredata/'+dataset+'_frame50/xsub/val_position.npy'
-train_label_path = '../souredata/'+dataset+'_frame50/xsub/train_label.pkl'
-test_label_path = '../souredata/'+dataset+'_frame50/xsub/val_label.pkl'
+# ntu 60
+split_1 = [10, 11, 19, 26, 56]
+split_2 = [0, 8, 15, 28, 46]
+split_3 = [15, 19, 23, 47, 50]
+split_4 = [29, 37, 38, 45, 55]
+
+# ntu 120
+split_5 = []
+split_6 = [0, 4, 6, 7, 24, 37, 54, 59, 97, 113]  # split 2
+split_7 = [63, 79, 86, 92, 98, 100, 103, 110, 111, 117]  # split 3
+split_8 = [9, 14, 17, 44, 60, 75, 81, 89, 108, 110]  # split 4
+
+# pku51
+split_9 = [10, 19, 27, 38, 48]  # split 1
+split_10 = [0, 9, 17, 30, 42]  # split 2
+split_11 = [18, 24, 31, 43, 45]  # split 3
+
+# gym99
+split_12 = [2, 35, 61, 66, 70, 74, 81, 85]  # split 2
+split_13 = [2, 3, 26, 48, 52, 82, 83, 92]  # split 3
+split_14 = [11, 22, 33, 35, 37, 40, 93, 98]  # split 4
+
+train_path = './sourcedata/'+dataset+'_frame50/xsub/train_position.npy'
+test_path = './sourcedata/'+dataset+'_frame50/xsub/val_position.npy'
+train_label_path = './sourcedata/'+dataset+'_frame50/xsub/train_label.pkl'
+test_label_path = './sourcedata/'+dataset+'_frame50/xsub/val_label.pkl'
+
+os.makedirs("./data/zeroshot/"+dataset+"/"+split, exist_ok=True)
+_ = open('./data/zeroshot/'+dataset+'/'+split+'/__init__.py', 'w')
 
 seen_train_data_path = "./data/zeroshot/"+dataset+"/"+split+"/seen_train_data.npy"
 seen_train_label_path = "./data/zeroshot/"+dataset+"/"+split+"/seen_train_label.npy"

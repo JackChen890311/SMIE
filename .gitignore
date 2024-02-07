@@ -1,0 +1,12 @@
+# data
+data/*
+sourcedata/*
+
+# logs
+output/*
+
+# models
+module/gcn/model/*
+
+# pycache
+**/__pycache__/
