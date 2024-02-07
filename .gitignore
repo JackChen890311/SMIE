@@ -1,6 +1,9 @@
 # data
 data/*
 sourcedata/*
+GYM_DATA/data/*
+GYM_DATA/data_50/*
+GYM_DATA/gym_2d.pkl
 
 # logs
 output/*
